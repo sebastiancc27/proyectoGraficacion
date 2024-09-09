@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://8xnnal82ielm"]
+
+[ext_resource type="Texture2D" uid="uid://ucw4tqtwejah" path="res://zombiebasic.png" id="1_wlkll"]
+[ext_resource type="Script" path="res://enemigo.gd" id="2_mfvho"]
+[ext_resource type="AudioStream" uid="uid://k3nccc4agfhu" path="res://golpe-de-pelea- (mp3cut.net).mp3" id="3_0uae5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a42jf"]
+size = Vector2(57.4118, 63.1111)
+
+[node name="Enemigo" type="Sprite2D"]
+position = Vector2(72, 131)
+rotation = 1.59523
+scale = Vector2(1.2, 0.985)
+texture = ExtResource("1_wlkll")
+hframes = 4
+vframes = 3
+script = ExtResource("2_mfvho")
+
+[node name="HitBox" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(18.7059, 5.77778)
+shape = SubResource("RectangleShape2D_a42jf")
+
+[node name="aturdido_timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="SonidoEnemigo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0uae5")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="aturdido_timer" to="." method="_on_aturdido_timer_timeout"]

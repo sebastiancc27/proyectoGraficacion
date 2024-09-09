@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://k3nccc4agfhu"
+path="res://.godot/imported/golpe-de-pelea- (mp3cut.net).mp3-df4e38f6a081308e9472df5cd9e27e43.mp3str"
+
+[deps]
+
+source_file="res://golpe-de-pelea- (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/golpe-de-pelea- (mp3cut.net).mp3-df4e38f6a081308e9472df5cd9e27e43.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

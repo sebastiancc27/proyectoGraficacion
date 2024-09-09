@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqu55w5sgirlg"]
+
+[ext_resource type="Texture2D" uid="uid://jvtc4q7eko7p" path="res://transparent-bullet-cartoon-bullet-metallic-toy-yellow-bullet-c-yellow-cartoon-bullet-shell-toy65c0f97a70e6c2.1430103417071455944625.png" id="1_ham5g"]
+[ext_resource type="Script" path="res://bullet.gd" id="2_lw3a2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vipxj"]
+size = Vector2(1464, 3680.03)
+
+[node name="Bullet" type="Sprite2D"]
+position = Vector2(359.5, 320.5)
+scale = Vector2(0.00136612, 0.00190217)
+texture = ExtResource("1_ham5g")
+script = ExtResource("2_lw3a2")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="HitBox" type="Area2D" parent="." groups=["enemy_damager"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(366, 0)
+shape = SubResource("RectangleShape2D_vipxj")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

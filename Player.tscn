@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdmn4ygvsyve6"]
+
+[ext_resource type="Texture2D" uid="uid://d1chmp1ji38jt" path="res://bk_officer/officer_shoot_strip.png" id="1_g8xei"]
+[ext_resource type="Script" path="res://Player.gd" id="2_87pow"]
+[ext_resource type="AudioStream" uid="uid://cju3ix20yuo2c" path="res://9-mm-gunshot.mp3" id="3_xq5av"]
+[ext_resource type="AudioStream" uid="uid://co0awixor4dad" path="res://sharp-punch.mp3" id="4_a0hrg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spad8"]
+
+[node name="Player" type="Sprite2D"]
+position = Vector2(173, 90)
+texture = ExtResource("1_g8xei")
+hframes = 6
+script = ExtResource("2_87pow")
+
+[node name="Reload_Speed" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_spad8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="SonidoBala" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_xq5av")
+
+[node name="SonidoDano" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_a0hrg")
+
+[connection signal="timeout" from="Reload_Speed" to="." method="_on_reload_speed_timeout"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
