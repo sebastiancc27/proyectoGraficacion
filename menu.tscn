@@ -1,0 +1,133 @@
+[gd_scene load_steps=10 format=3 uid="uid://dc1ays7kshrqw"]
+
+[ext_resource type="FontFile" uid="uid://c2b4go0rd7ih5" path="res://Font.ttf" id="1_bo4gf"]
+[ext_resource type="Script" path="res://menu.gd" id="1_c0i1r"]
+[ext_resource type="Texture2D" uid="uid://xojr7mbce4im" path="res://fei-bg-transparent.png" id="1_fnrxc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjnjr"]
+bg_color = Color(0.929412, 0.486275, 0.0196078, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.749374, 0.386252, 0.00522815, 1)
+shadow_size = 1
+shadow_offset = Vector2(3, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65fh4"]
+bg_color = Color(0.929412, 0.490196, 0.0156863, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6o3o"]
+bg_color = Color(0.933333, 0.490196, 0.0156863, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.74902, 0.384314, 0.00392157, 1)
+shadow_size = 1
+shadow_offset = Vector2(3, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhlpn"]
+bg_color = Color(0.933333, 0.490196, 0.0156863, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78ns2"]
+bg_color = Color(1, 0.235294, 0.180392, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 0, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(3, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4ud0"]
+bg_color = Color(1, 0.234886, 0.178821, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c0i1r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -52.0
+offset_right = 97.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="ButtonJugar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_bo4gf")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_pjnjr")
+theme_override_styles/normal = SubResource("StyleBoxFlat_65fh4")
+text = "Jugar"
+
+[node name="ButtonCreditos" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_bo4gf")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_c6o3o")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jhlpn")
+text = "Creditos"
+
+[node name="ButtonSalir" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_bo4gf")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_78ns2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_k4ud0")
+text = "Salir"
+
+[node name="Fei-bg-transparent" type="Sprite2D" parent="."]
+position = Vector2(64.75, 68.8858)
+scale = Vector2(0.521635, 0.521635)
+texture = ExtResource("1_fnrxc")
+
+[node name="Titulo" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.0
+offset_top = 28.0
+offset_right = 89.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_bo4gf")
+theme_override_font_sizes/font_size = 40
+text = "RackDefense"
+
+[connection signal="pressed" from="VBoxContainer/ButtonJugar" to="." method="_on_button_jugar_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonCreditos" to="." method="_on_button_creditos_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonSalir" to="." method="_on_button_salir_pressed"]

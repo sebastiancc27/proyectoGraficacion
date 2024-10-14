@@ -40,6 +40,7 @@ func _on_hit_box_area_entered(area: Area2D) :
 	if area.is_in_group("enemy"):
 		sonidoDaño.play()
 		visible=false
+		Global.save_game()
 		Global.score=0
 		await get_tree().create_timer(0.5).timeout
 		get_tree().reload_current_scene()

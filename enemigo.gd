@@ -11,6 +11,8 @@ var aturdido = false
 func _process(delta):
 	if Global.player !=null and aturdido==false:
 		velocidad=global_position.direction_to(Global.player.global_position)
+		var direction = (Global.player.global_position - global_position).normalized()
+		rotation = direction.angle()-5
 	elif aturdido:
 		velocidad=lerp(velocidad,Vector2(0,0),0.3)
 	global_position+=velocidad*rapidez*delta

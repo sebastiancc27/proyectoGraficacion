@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctl56hdvv65b0"]
+[gd_scene load_steps=10 format=3 uid="uid://ctl56hdvv65b0"]
 
 [ext_resource type="Script" path="res://fei.gd" id="1_wqemd"]
 [ext_resource type="PackedScene" uid="uid://bdmn4ygvsyve6" path="res://Player.tscn" id="2_sq2gx"]
 [ext_resource type="PackedScene" uid="uid://8xnnal82ielm" path="res://enemigo.tscn" id="3_52nlb"]
 [ext_resource type="FontFile" uid="uid://c2b4go0rd7ih5" path="res://Font.ttf" id="4_quq10"]
 [ext_resource type="Script" path="res://score.gd" id="5_fpexq"]
+[ext_resource type="Script" path="res://high_score.gd" id="6_2nno8"]
 
 [sub_resource type="Environment" id="Environment_rb14t"]
 background_mode = 3
@@ -31,7 +32,6 @@ position = Vector2(115.375, 161)
 scale = Vector2(0.438172, 0.5)
 
 [node name="Enemy_Spawn_Timer" type="Timer" parent="."]
-wait_time = 0.25
 autostart = true
 
 [node name="Control" type="Control" parent="."]
@@ -58,5 +58,17 @@ label_settings = SubResource("LabelSettings_oc0t1")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_fpexq")
+
+[node name="HighScore" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 304.0
+offset_right = 639.0
+offset_bottom = 359.0
+theme_override_fonts/font = ExtResource("4_quq10")
+theme_override_font_sizes/font_size = 30
+text = "HighScore: "
+horizontal_alignment = 1
+script = ExtResource("6_2nno8")
 
 [connection signal="timeout" from="Enemy_Spawn_Timer" to="." method="_on_enemy_spawn_timer_timeout"]
