@@ -3,8 +3,8 @@ extends Label
 
 func load_game():
 	# Verificar si el archivo existe antes de intentar abrirlo
-	if FileAccess.file_exists("C:/Users/Hp/OneDrive/Escritorio/7Semestre/Graficación/Proyecto/juego2/savegame.txt"):	
-		var file = FileAccess.open("C:/Users/Hp/OneDrive/Escritorio/7Semestre/Graficación/Proyecto/juego2/savegame.txt", FileAccess.READ)
+	if FileAccess.file_exists("./savegame.txt"):	
+		var file = FileAccess.open("./savegame.txt", FileAccess.READ)
 		var number = file.get_line()
 		text = "HighScore: " +str(number)
 		file.close()

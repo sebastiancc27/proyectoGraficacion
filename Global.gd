@@ -21,7 +21,11 @@ func save():
 var save_dictionary = save()
 
 func save_game():
-	var save_game  = FileAccess.open("C:/Users/Hp/OneDrive/Escritorio/7Semestre/Graficación/Proyecto/juego2/savegame.txt",FileAccess.WRITE)
+	var save_game  = FileAccess.open("./savegame.txt",FileAccess.WRITE)
 	save_game.store_line(JSON.stringify(highscore))
 	save_game.close()
 	
+#Código Angel
+
+var nivel = 3
+var vida = 20

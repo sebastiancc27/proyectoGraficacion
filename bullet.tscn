@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vipxj"]
 size = Vector2(1464, 3680.03)
 
-[node name="Bullet" type="Sprite2D"]
+[node name="Bullet" type="Sprite2D" groups=["Proyectil"]]
 position = Vector2(359.5, 320.5)
 scale = Vector2(0.00136612, 0.00190217)
 texture = ExtResource("1_ham5g")
@@ -14,10 +14,11 @@ script = ExtResource("2_lw3a2")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
-[node name="HitBox" type="Area2D" parent="." groups=["enemy_damager"]]
+[node name="HitBox" type="Area2D" parent="." groups=["Proyectil"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(366, 0)
 shape = SubResource("RectangleShape2D_vipxj")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
