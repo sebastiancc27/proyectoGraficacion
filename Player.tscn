@@ -27,6 +27,7 @@ shape = SubResource("RectangleShape2D_spad8")
 
 [node name="SonidoBala" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_xq5av")
+volume_db = -45.0
 
 [node name="SonidoDano" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_a0hrg")

@@ -4,6 +4,7 @@ var node_creation_paren = null
 var player = null
 var score = 0
 var highscore = 0
+var cash = 100
 
 func instance_node(node, location, parent):
 	var node_instance = node.instantiate()
@@ -27,5 +28,5 @@ func save_game():
 	
 #Código Angel
 
-var nivel = 3
+var nivel = 0
 var vida = 20

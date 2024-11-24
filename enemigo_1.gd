@@ -12,6 +12,7 @@ func _physics_process(_delta):
 func _vida():
 	if vida <= 0:
 		queue_free()
+		Global.cash += 20
 
 
 func _on_area_2d_area_entered(area):

@@ -1,9 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnfo43860lrfo"]
+[gd_scene load_steps=14 format=3 uid="uid://dnfo43860lrfo"]
 
 [ext_resource type="Script" path="res://mapa.gd" id="1_ohn6x"]
 [ext_resource type="Texture2D" uid="uid://b6ottelxl0baq" path="res://Map.png" id="1_q8hht"]
 [ext_resource type="PackedScene" uid="uid://bdmn4ygvsyve6" path="res://Player.tscn" id="2_p5w5v"]
 [ext_resource type="PackedScene" uid="uid://cavww2kwiuk5j" path="res://Enemigo1.tscn" id="2_uvu04"]
+[ext_resource type="Script" path="res://dinero.gd" id="5_ig51y"]
+[ext_resource type="Script" path="res://oleada.gd" id="6_v2he3"]
+[ext_resource type="Script" path="res://pasar_oleada.gd" id="7_o4gid"]
+[ext_resource type="Script" path="res://btn_si.gd" id="8_5vmv7"]
+[ext_resource type="Script" path="res://btn_no.gd" id="9_sisyt"]
+[ext_resource type="Texture2D" uid="uid://coq11kh417cl2" path="res://icono_dinero.png" id="10_85qk4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yfmeu"]
 texture = ExtResource("1_q8hht")
@@ -71,11 +77,79 @@ curve = SubResource("Curve2D_flv83")
 position = Vector2(895, -31)
 rotation = 3.14159
 
+[node name="next_wave" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
 [node name="Spawn_Enemigo" type="Timer" parent="."]
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource("2_p5w5v")]
 
+[node name="timer_oleada" type="Label" parent="."]
+offset_left = -53.0
+offset_top = 241.0
+offset_right = 39.0
+offset_bottom = 264.0
+text = "Sig. oleada: "
+
+[node name="Dinero" type="Label" parent="."]
+top_level = true
+offset_left = -32.0
+offset_top = -84.0
+offset_right = 82.0
+offset_bottom = -42.0
+theme_override_font_sizes/font_size = 30
+text = "100"
+max_lines_visible = 10
+script = ExtResource("5_ig51y")
+
+[node name="Oleada" type="Label" parent="."]
+top_level = true
+offset_left = -64.0
+offset_top = -44.0
+offset_right = 50.0
+offset_bottom = -2.0
+theme_override_font_sizes/font_size = 30
+text = "Oleada:"
+max_lines_visible = 10
+script = ExtResource("6_v2he3")
+
+[node name="container_next_wave" type="GridContainer" parent="."]
+offset_left = 155.0
+offset_top = -245.0
+offset_right = 664.0
+offset_bottom = -133.0
+
+[node name="pasar_oleada" type="Label" parent="container_next_wave"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "¿Desea pasar a la siguiente oleada?"
+script = ExtResource("7_o4gid")
+
+[node name="btn_si" type="Button" parent="container_next_wave"]
+layout_mode = 2
+text = "Si"
+script = ExtResource("8_5vmv7")
+
+[node name="btn_no" type="Button" parent="container_next_wave"]
+layout_mode = 2
+text = "No
+"
+script = ExtResource("9_sisyt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -63.0
+offset_top = -75.0
+offset_right = -30.0
+offset_bottom = -49.0
+texture = ExtResource("10_85qk4")
+expand_mode = 1
+
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+[connection signal="timeout" from="next_wave" to="." method="_on_spawn_enemigo_timeout"]
+[connection signal="timeout" from="next_wave" to="." method="_on_next_wave_timeout"]
 [connection signal="timeout" from="Spawn_Enemigo" to="." method="_on_spawn_enemigo_timeout"]
+[connection signal="pressed" from="container_next_wave/btn_si" to="." method="_on_btn_si_pressed"]
+[connection signal="pressed" from="container_next_wave/btn_no" to="." method="_on_btn_no_pressed"]
