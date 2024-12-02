@@ -2,20 +2,20 @@ extends Node2D
 
 var shoot = true
 const ROTATION_OFFSET = PI / 2
-var municion = preload("res://Escenas/Municion/proyectil_missile.tscn")
-var evolucion = preload("res://Escenas/torre_3_2.tscn")
+var municion = preload("res://Escenas/Municion/proyectil_cannon.tscn")
 @onready var timer = $Velocidad_disparo
-var velocidad_disparo = 4
+var velocidad_disparo = 1
 var enemigos_en_area = []
 var nivel_torre = 1
-var subir_nivel = 200
-var daño = Global.daño_proyectil_missile
-var valor_total = 200
+var subir_nivel = 1000
+var daño = 1300
+var valor_total = 3500
 
 func _ready():
 	timer.wait_time = velocidad_disparo
 	timer.one_shot = true
 	timer.start()
+	$Area2D/CollisionShape2D.disabled = true
 
 func _process(delta):
 	$VBoxContainer/Label.text = str("Nivel: ", nivel_torre)
@@ -24,10 +24,8 @@ func _process(delta):
 	$VBoxContainer/Vender.text = str("Vender: $", valor_total*.6)
 	if nivel_torre < 5:
 		$VBoxContainer/Subir_nivel.text = str("Subir Nivel: $", subir_nivel)
-		$VBoxContainer/Evolucionar.visible = false
 	elif nivel_torre == 5:
 		$VBoxContainer/Subir_nivel.visible = false
-		$VBoxContainer/Evolucionar.visible = true
 	_alerta()
 	if Input.is_action_just_pressed("click_d"):
 		$VBoxContainer.visible = false
@@ -74,28 +72,20 @@ func _on_velocidad_disparo_timeout():
 func _on_seguimiento_timeout():
 	$area/area_vision.disabled = true
 
+func _on_button_pressed():
+	$Button.disabled = false
+	$VBoxContainer.visible = true
+
 func _on_subir_nivel_pressed():
 	if Global.cash >= subir_nivel:
 		valor_total += subir_nivel
 		nivel_torre += 1
 		daño = daño * 2
 		Global.cash -= subir_nivel
-		$area/area_vision.shape.radius += 5
+		$area/area_vision.shape.radius += 15
 		subir_nivel = subir_nivel * 2
-
-func _on_button_pressed():
-	$VBoxContainer.visible = true
 
 
 func _on_vender_pressed():
 	Global.cash += valor_total * .6
 	queue_free()
-
-
-func _on_evolucionar_pressed():
-	if 2000 <= Global.cash:
-		$VBoxContainer.visible = false
-		queue_free()
-		var instance = evolucion.instantiate()
-		get_parent().add_child(instance)
-		Global.cash -= 2000

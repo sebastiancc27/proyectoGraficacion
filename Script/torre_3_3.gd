@@ -3,14 +3,13 @@ extends Node2D
 var shoot = true
 const ROTATION_OFFSET = PI / 2
 var municion = preload("res://Escenas/Municion/proyectil_missile.tscn")
-var evolucion = preload("res://Escenas/torre_3_2.tscn")
 @onready var timer = $Velocidad_disparo
-var velocidad_disparo = 4
+var velocidad_disparo = 20
 var enemigos_en_area = []
 var nivel_torre = 1
-var subir_nivel = 200
-var daño = Global.daño_proyectil_missile
-var valor_total = 200
+var subir_nivel = 2000
+var daño = 13000
+var valor_total = 15000
 
 func _ready():
 	timer.wait_time = velocidad_disparo
@@ -24,10 +23,8 @@ func _process(delta):
 	$VBoxContainer/Vender.text = str("Vender: $", valor_total*.6)
 	if nivel_torre < 5:
 		$VBoxContainer/Subir_nivel.text = str("Subir Nivel: $", subir_nivel)
-		$VBoxContainer/Evolucionar.visible = false
 	elif nivel_torre == 5:
 		$VBoxContainer/Subir_nivel.visible = false
-		$VBoxContainer/Evolucionar.visible = true
 	_alerta()
 	if Input.is_action_just_pressed("click_d"):
 		$VBoxContainer.visible = false
@@ -90,12 +87,3 @@ func _on_button_pressed():
 func _on_vender_pressed():
 	Global.cash += valor_total * .6
 	queue_free()
-
-
-func _on_evolucionar_pressed():
-	if 2000 <= Global.cash:
-		$VBoxContainer.visible = false
-		queue_free()
-		var instance = evolucion.instantiate()
-		get_parent().add_child(instance)
-		Global.cash -= 2000

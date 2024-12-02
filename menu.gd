@@ -13,7 +13,7 @@ func _on_button_jugar_pressed() -> void:
 
 
 func _on_button_creditos_pressed() -> void:
-	pass # Replace with function body.	
+	get_tree().change_scene_to_file("res://Creditos.tscn")
 
 
 func _on_button_salir_pressed() -> void:

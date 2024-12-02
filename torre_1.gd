@@ -3,8 +3,9 @@ extends Node2D
 var shoot = true
 const ROTATION_OFFSET = PI / 2
 var municion = preload("res://Escenas/Municion/proyectil_cannon.tscn")
+var evolucion = preload("res://Escenas/torre_1_2.tscn")
 @onready var timer = $Velocidad_disparo
-var velocidad_disparo = 1
+var velocidad_disparo = 2.5
 var enemigos_en_area = []
 var nivel_torre = 1
 var subir_nivel = 100
@@ -18,11 +19,16 @@ func _ready():
 	$Area2D/CollisionShape2D.disabled = true
 
 func _process(delta):
-	$VBoxContainer/Subir_nivel.text = str("Subir Nivel: $", subir_nivel)
 	$VBoxContainer/Label.text = str("Nivel: ", nivel_torre)
 	$VBoxContainer/HBoxContainer/Label.text = str("Daño: ", daño)
 	$VBoxContainer/HBoxContainer/Label2.text = str("Rango: ", $area/area_vision.shape.radius)
 	$VBoxContainer/Vender.text = str("Vender: $", valor_total*.6)
+	if nivel_torre < 5:
+		$VBoxContainer/Subir_nivel.text = str("Subir Nivel: $", subir_nivel)
+		$VBoxContainer/Evolucionar.visible = false
+	elif nivel_torre == 5:
+		$VBoxContainer/Subir_nivel.visible = false
+		$VBoxContainer/Evolucionar.visible = true
 	_alerta()
 	if Input.is_action_just_pressed("click_d"):
 		$VBoxContainer.visible = false
@@ -86,3 +92,12 @@ func _on_subir_nivel_pressed():
 func _on_vender_pressed():
 	Global.cash += valor_total * .6
 	queue_free()
+
+
+func _on_evolucionar_pressed():
+	if 500 <= Global.cash:
+		$VBoxContainer.visible = false
+		queue_free()
+		var instance = evolucion.instantiate()
+		get_parent().add_child(instance)
+		Global.cash -= 500

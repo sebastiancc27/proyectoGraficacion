@@ -68,7 +68,7 @@ text = "Rango: ???"
 
 [node name="Evolucionar" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Evolucionar"
+text = "Evolucionar $2000"
 
 [node name="Vender" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -80,4 +80,5 @@ text = "Vender $??? "
 [connection signal="timeout" from="seguimiento" to="." method="_on_seguimiento_timeout"]
 [connection signal="timeout" from="Velocidad_disparo" to="." method="_on_velocidad_disparo_timeout"]
 [connection signal="pressed" from="VBoxContainer/Subir_nivel" to="." method="_on_subir_nivel_pressed"]
+[connection signal="pressed" from="VBoxContainer/Evolucionar" to="." method="_on_evolucionar_pressed"]
 [connection signal="pressed" from="VBoxContainer/Vender" to="." method="_on_vender_pressed"]

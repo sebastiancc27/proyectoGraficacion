@@ -21,11 +21,6 @@ run/size/viewport_width=1152
 
 Global="*res://Global.gd"
 
-[display]
-
-window/size/viewport_width=640
-window/size/viewport_height=360
-
 [global_group]
 
 Proyectil_cannon=""
@@ -72,3 +67,7 @@ click_d={
 [layer_names]
 
 2d_physics/layer_1="Player"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

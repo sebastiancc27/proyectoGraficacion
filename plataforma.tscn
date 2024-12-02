@@ -27,18 +27,17 @@ offset_bottom = 20.0
 
 [node name="Cannon" type="Button" parent="Opciones"]
 layout_mode = 2
-text = "Cañon $100"
+text = "Cañon $200"
 icon = ExtResource("3_51c8g")
 
 [node name="Mg" type="Button" parent="Opciones"]
 layout_mode = 2
-text = "Metralleta $50"
+text = "Metralleta $150"
 icon = ExtResource("4_fhom7")
 
 [node name="Missile" type="Button" parent="Opciones"]
 layout_mode = 2
-text = "Misil $200
-"
+text = "Misil $400"
 icon = ExtResource("5_qiymu")
 
 [connection signal="pressed" from="Seleccionar_torre" to="." method="_on_seleccionar_torre_pressed"]

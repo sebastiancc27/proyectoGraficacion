@@ -1,41 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://67dwpro7to48"]
+[gd_scene load_steps=5 format=3 uid="uid://b8a0q7jxmfe50"]
 
-[ext_resource type="Script" path="res://torre_1.gd" id="1_15prc"]
-[ext_resource type="Texture2D" uid="uid://dp6b5kun1e01h" path="res://Torres/Tower.png" id="2_7rsen"]
-[ext_resource type="Texture2D" uid="uid://wxc17np7hlqi" path="res://Torres/Cañon/Cannon.png" id="3_dxd03"]
+[ext_resource type="Script" path="res://Script/torre_3_3.gd" id="1_bctkw"]
+[ext_resource type="Texture2D" uid="uid://dp6b5kun1e01h" path="res://Torres/Tower.png" id="2_rnn6a"]
+[ext_resource type="Texture2D" uid="uid://b6fv5rrkwu60t" path="res://Torres/Misil/Missile_Launcher3.png" id="3_u25cp"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_i5c6m"]
-radius = 147.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_k55sh"]
+radius = 140.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cd3ig"]
-size = Vector2(75, 66)
-
-[node name="torre_1" type="Node2D"]
-script = ExtResource("1_15prc")
+[node name="torre_3_3" type="Node2D"]
+script = ExtResource("1_bctkw")
 
 [node name="Button" type="Button" parent="."]
-offset_left = -34.0
-offset_top = -31.0
-offset_right = 33.0
+offset_left = -31.0
+offset_top = -29.0
+offset_right = 31.0
 offset_bottom = 31.0
 
 [node name="area" type="Area2D" parent="."]
 
 [node name="area_vision" type="CollisionShape2D" parent="area"]
-shape = SubResource("CircleShape2D_i5c6m")
+shape = SubResource("CircleShape2D_k55sh")
 
 [node name="base" type="Sprite2D" parent="."]
 rotation = 1.5708
 scale = Vector2(0.274, 0.274)
-texture = ExtResource("2_7rsen")
+texture = ExtResource("2_rnn6a")
 
 [node name="torreta" type="Sprite2D" parent="."]
 rotation = 1.5708
 scale = Vector2(0.274, 0.274)
-texture = ExtResource("3_dxd03")
+texture = ExtResource("3_u25cp")
 
 [node name="Position2D" type="Marker2D" parent="torreta"]
-position = Vector2(131.387, 10.9484)
+position = Vector2(116.788, -0.000423431)
 
 [node name="seguimiento" type="Timer" parent="."]
 wait_time = 0.2
@@ -44,16 +41,10 @@ autostart = true
 [node name="Velocidad_disparo" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-2, -1)
-shape = SubResource("RectangleShape2D_cd3ig")
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 visible = false
-offset_right = 155.0
-offset_bottom = 155.0
+offset_right = 141.0
+offset_bottom = 89.0
 
 [node name="Subir_nivel" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -75,10 +66,6 @@ text = "Daño: ???"
 layout_mode = 2
 text = "Rango: ???"
 
-[node name="Evolucionar" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Evolucionar $500"
-
 [node name="Vender" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Vender $??? "
@@ -88,7 +75,5 @@ text = "Vender $??? "
 [connection signal="area_exited" from="area" to="." method="_on_area_area_exited"]
 [connection signal="timeout" from="seguimiento" to="." method="_on_seguimiento_timeout"]
 [connection signal="timeout" from="Velocidad_disparo" to="." method="_on_velocidad_disparo_timeout"]
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="pressed" from="VBoxContainer/Subir_nivel" to="." method="_on_subir_nivel_pressed"]
-[connection signal="pressed" from="VBoxContainer/Evolucionar" to="." method="_on_evolucionar_pressed"]
 [connection signal="pressed" from="VBoxContainer/Vender" to="." method="_on_vender_pressed"]

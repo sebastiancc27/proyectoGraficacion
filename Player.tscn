@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdmn4ygvsyve6"]
+[gd_scene load_steps=7 format=3 uid="uid://bdmn4ygvsyve6"]
 
 [ext_resource type="Texture2D" uid="uid://d1chmp1ji38jt" path="res://bk_officer/officer_shoot_strip.png" id="1_g8xei"]
 [ext_resource type="Script" path="res://Player.gd" id="2_87pow"]
@@ -7,16 +7,22 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spad8"]
 
-[node name="Player" type="Sprite2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ll8ws"]
+size = Vector2(28, 27)
+
+[node name="Player" type="CharacterBody2D"]
 position = Vector2(173, 90)
-texture = ExtResource("1_g8xei")
-hframes = 6
+collision_mask = 2
 script = ExtResource("2_87pow")
 
 [node name="Reload_Speed" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_g8xei")
+hframes = 6
 
 [node name="HitBox" type="Area2D" parent="."]
 
@@ -31,6 +37,10 @@ volume_db = -45.0
 
 [node name="SonidoDano" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_a0hrg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0.5)
+shape = SubResource("RectangleShape2D_ll8ws")
 
 [connection signal="timeout" from="Reload_Speed" to="." method="_on_reload_speed_timeout"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

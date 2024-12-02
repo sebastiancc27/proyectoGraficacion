@@ -4,9 +4,9 @@ var torre_1 = preload("res://Escenas/torre_1.tscn")
 var torre_2 = preload("res://Escenas/torre_2.tscn")
 var torre_3 = preload("res://Escenas/torre_3.tscn")
 
-const precio_cannon = 100
-const precio_mg = 50
-const precio_missile = 200
+const precio_cannon = 200
+const precio_mg = 150
+const precio_missile = 400
 
 func _ready():
 	$Opciones.visible = false

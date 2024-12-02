@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxk83reh5xb70"
-path="res://.godot/imported/frame.png-1cbf3220df5358936a4ef77443f410f9.ctex"
+uid="uid://dcodm61omacvt"
+path="res://.godot/imported/timer-sand.png-b51261aad702b5ddad3afcf922c594b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Escenas/frame.png"
-dest_files=["res://.godot/imported/frame.png-1cbf3220df5358936a4ef77443f410f9.ctex"]
+source_file="res://timer-sand.png"
+dest_files=["res://.godot/imported/timer-sand.png-b51261aad702b5ddad3afcf922c594b4.ctex"]
 
 [params]
 

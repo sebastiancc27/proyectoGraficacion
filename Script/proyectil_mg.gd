@@ -12,8 +12,8 @@ func _process(_delta):
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Enemigo"):
 		var enemigo = area.get_parent()
-		enemigo.vida -= daño
-		if enemigo.vida <= 0:
+		enemigo.vida_actual -= daño
+		if enemigo.vida_actual <= 0:
 			area.queue_free()
 		queue_free()
 

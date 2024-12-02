@@ -3,14 +3,14 @@ extends Node2D
 var shoot = true
 const ROTATION_OFFSET = PI / 2
 var municion = preload("res://Escenas/Municion/proyectil_missile.tscn")
-var evolucion = preload("res://Escenas/torre_3_2.tscn")
+var evolucion = preload("res://Escenas/torre_3_3.tscn")
 @onready var timer = $Velocidad_disparo
-var velocidad_disparo = 4
+var velocidad_disparo = 8
 var enemigos_en_area = []
 var nivel_torre = 1
-var subir_nivel = 200
-var daño = Global.daño_proyectil_missile
-var valor_total = 200
+var subir_nivel = 900
+var daño = 1000
+var valor_total = 4000
 
 func _ready():
 	timer.wait_time = velocidad_disparo
@@ -93,9 +93,9 @@ func _on_vender_pressed():
 
 
 func _on_evolucionar_pressed():
-	if 2000 <= Global.cash:
+	if 5000 <= Global.cash:
 		$VBoxContainer.visible = false
 		queue_free()
 		var instance = evolucion.instantiate()
 		get_parent().add_child(instance)
-		Global.cash -= 2000
+		Global.cash -= 5000

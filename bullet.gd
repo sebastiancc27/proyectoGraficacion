@@ -17,5 +17,8 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func _on_hit_box_area_entered(area):
 	if area.is_in_group("Enemigo"):
-		set_deferred("monitoring", false)
+		var enemigo = area.get_parent()
+		enemigo.vida_actual -= 1
+		if enemigo.vida_actual <= 0:
+			area.queue_free()
 		queue_free()
