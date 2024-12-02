@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://c2b4go0rd7ih5" path="res://Font.ttf" id="1_bo4gf"]
 [ext_resource type="Script" path="res://menu.gd" id="1_c0i1r"]
-[ext_resource type="Texture2D" uid="uid://xojr7mbce4im" path="res://fei-bg-transparent.png" id="1_fnrxc"]
+[ext_resource type="Texture2D" uid="uid://cellbpjkecbbw" path="res://opcion1.png" id="2_5xl81"]
 [ext_resource type="AudioStream" uid="uid://b7v5gjixya25j" path="res://musicaFondo.mp3" id="4_7v7h0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjnjr"]
@@ -65,22 +65,50 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c0i1r")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 640.0
-offset_bottom = 360.0
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = -130.0
+offset_right = 143.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5xl81")
+expand_mode = 1
+stretch_mode = 3
+flip_h = true
+
+[node name="Titulo" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -122.0
+offset_top = 95.0
+offset_right = 116.0
+offset_bottom = 139.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_bo4gf")
+theme_override_font_sizes/font_size = 40
+text = "Rakshas Defense
+"
+
+[node name="MusicaFondo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_7v7h0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -96.0
-offset_top = -52.0
-offset_right = 97.0
-offset_bottom = 133.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 152.0
+offset_top = 175.0
+offset_right = -165.0
+offset_bottom = -47.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
@@ -108,29 +136,6 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/hover = SubResource("StyleBoxFlat_78ns2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_k4ud0")
 text = "Salir"
-
-[node name="Fei-bg-transparent" type="Sprite2D" parent="."]
-position = Vector2(64.75, 68.8858)
-scale = Vector2(0.521635, 0.521635)
-texture = ExtResource("1_fnrxc")
-
-[node name="Titulo" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -89.0
-offset_top = 28.0
-offset_right = 89.0
-offset_bottom = 72.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_bo4gf")
-theme_override_font_sizes/font_size = 40
-text = "RackDefense"
-
-[node name="MusicaFondo" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_7v7h0")
 
 [connection signal="pressed" from="VBoxContainer/ButtonJugar" to="." method="_on_button_jugar_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonCreditos" to="." method="_on_button_creditos_pressed"]

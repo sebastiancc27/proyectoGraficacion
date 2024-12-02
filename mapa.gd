@@ -101,7 +101,7 @@ func _on_final_area_entered(area):
 		$Vida.text = "Vida: " + str(Global.vidaBase)  
 		area.queue_free()  
 	if Global.vidaBase <= 0:
-		get_tree().change_scene_to_file("res://menu.tscn")
+		get_tree().change_scene_to_file("res://gameOver.tscn")
 
 
 func _on_button_torre_1_pressed():
