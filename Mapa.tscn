@@ -1,19 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://dnfo43860lrfo"]
+[gd_scene load_steps=16 format=3 uid="uid://dnfo43860lrfo"]
 
 [ext_resource type="Script" path="res://mapa.gd" id="1_ohn6x"]
 [ext_resource type="Texture2D" uid="uid://b6ottelxl0baq" path="res://Map.png" id="1_q8hht"]
 [ext_resource type="PackedScene" uid="uid://bdmn4ygvsyve6" path="res://Player.tscn" id="2_p5w5v"]
-[ext_resource type="PackedScene" uid="uid://cavww2kwiuk5j" path="res://Enemigo1.tscn" id="2_uvu04"]
 [ext_resource type="Texture2D" uid="uid://ddhq1a5ppl31j" path="res://mapaJefe.png" id="3_7sypr"]
-[ext_resource type="PackedScene" uid="uid://c06w777jqe80s" path="res://Enemigo2.tscn" id="5_032i8"]
 [ext_resource type="Script" path="res://dinero.gd" id="5_ig51y"]
 [ext_resource type="Script" path="res://oleada.gd" id="6_v2he3"]
 [ext_resource type="Script" path="res://pasar_oleada.gd" id="7_o4gid"]
 [ext_resource type="Script" path="res://btn_si.gd" id="8_5vmv7"]
 [ext_resource type="Script" path="res://btn_no.gd" id="9_sisyt"]
-[ext_resource type="Texture2D" uid="uid://coq11kh417cl2" path="res://icono_dinero.png" id="10_85qk4"]
-[ext_resource type="Texture2D" uid="uid://dp6b5kun1e01h" path="res://Torres/Tower.png" id="13_uknyp"]
-[ext_resource type="Texture2D" uid="uid://wxc17np7hlqi" path="res://Torres/Cañon/Cannon.png" id="14_srvnd"]
+[ext_resource type="Texture2D" uid="uid://coq11kh417cl2" path="res://icono_dinero.png" id="13_4lldu"]
+[ext_resource type="PackedScene" uid="uid://2an2d6mpjn61" path="res://plataforma.tscn" id="15_f6k1j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yfmeu"]
 texture = ExtResource("1_q8hht")
@@ -180,7 +177,7 @@ _data = {
 point_count = 10
 
 [node name="Base" type="Node2D"]
-position = Vector2(527, -105)
+position = Vector2(-4, -7)
 script = ExtResource("1_ohn6x")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -193,14 +190,6 @@ layer_0/tile_data = PackedInt32Array(-65542, 1, 1, -6, 1, 2, 65530, 1, 3, 131066
 position = Vector2(517, -55)
 curve = SubResource("Curve2D_flv83")
 
-[node name="Area2D" parent="Path2D" instance=ExtResource("2_uvu04")]
-position = Vector2(-752, 430)
-rotation = -1.5912
-
-[node name="PathFollow2D" parent="Path2D" instance=ExtResource("5_032i8")]
-position = Vector2(-752, 430)
-rotation = -1.5912
-
 [node name="next_wave" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
@@ -209,7 +198,7 @@ autostart = true
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource("2_p5w5v")]
-position = Vector2(11, 103)
+position = Vector2(23, 79)
 
 [node name="timer_oleada" type="Label" parent="."]
 offset_left = -374.0
@@ -220,10 +209,10 @@ text = "Sig. oleada: "
 
 [node name="Dinero" type="Label" parent="."]
 top_level = true
-offset_left = 163.0
-offset_top = -346.0
-offset_right = 277.0
-offset_bottom = -304.0
+offset_left = -366.5
+offset_top = -234.0
+offset_right = -252.5
+offset_bottom = -192.0
 theme_override_font_sizes/font_size = 30
 text = "100"
 max_lines_visible = 10
@@ -231,10 +220,10 @@ script = ExtResource("5_ig51y")
 
 [node name="Oleada" type="Label" parent="."]
 top_level = true
-offset_left = 739.0
-offset_top = -342.0
-offset_right = 853.0
-offset_bottom = -300.0
+offset_left = 256.0
+offset_top = -239.0
+offset_right = 370.0
+offset_bottom = -197.0
 theme_override_font_sizes/font_size = 30
 text = "Oleada:"
 max_lines_visible = 10
@@ -271,39 +260,32 @@ text = "No
 "
 script = ExtResource("9_sisyt")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -393.0
-offset_top = -232.0
-offset_right = -360.0
-offset_bottom = -206.0
-texture = ExtResource("10_85qk4")
-expand_mode = 1
-
 [node name="Final" type="Area2D" parent="."]
-position = Vector2(-822, -135)
+position = Vector2(-825, -129)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Final"]
 position = Vector2(515, -15)
 polygon = PackedVector2Array(-35, -57, 25, -56, 25, -41, -35, -43)
 
-[node name="Button_torre_1" type="Button" parent="."]
-offset_left = -181.0
-offset_top = 415.0
-offset_right = -113.0
-offset_bottom = 481.0
-metadata/_edit_group_ = true
+[node name="Plataforma" parent="." instance=ExtResource("15_f6k1j")]
+position = Vector2(-99, 210)
 
-[node name="Sprite2D2" type="Sprite2D" parent="Button_torre_1"]
-position = Vector2(31, 31)
-scale = Vector2(0.274, 0.274)
-texture = ExtResource("13_uknyp")
-metadata/_edit_group_ = true
+[node name="Plataforma2" parent="." instance=ExtResource("15_f6k1j")]
+position = Vector2(264, 25)
 
-[node name="Sprite2D" type="Sprite2D" parent="Button_torre_1"]
-position = Vector2(31, 31)
-scale = Vector2(0.274, 0.274)
-texture = ExtResource("14_srvnd")
-metadata/_edit_group_ = true
+[node name="Plataforma3" parent="." instance=ExtResource("15_f6k1j")]
+position = Vector2(260, 201)
+
+[node name="Plataforma4" parent="." instance=ExtResource("15_f6k1j")]
+position = Vector2(-239, -89)
+
+[node name="Plataforma5" parent="." instance=ExtResource("15_f6k1j")]
+position = Vector2(13, -66)
+
+[node name="IconoDinero" type="Sprite2D" parent="."]
+position = Vector2(-377.5, -203)
+scale = Vector2(0.105469, 0.0820313)
+texture = ExtResource("13_4lldu")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
@@ -314,4 +296,3 @@ metadata/_edit_group_ = true
 [connection signal="pressed" from="container_next_wave/btn_no" to="." method="_on_btn_no_pressed"]
 [connection signal="area_entered" from="Final" to="." method="_on_final_area_entered"]
 [connection signal="body_entered" from="Final" to="." method="_on_area_2d_body_entered"]
-[connection signal="pressed" from="Button_torre_1" to="." method="_on_button_torre_1_pressed"]

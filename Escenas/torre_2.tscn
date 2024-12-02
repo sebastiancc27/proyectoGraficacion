@@ -11,9 +11,9 @@ radius = 140.0
 script = ExtResource("1_adgum")
 
 [node name="Button" type="Button" parent="."]
-offset_left = -15.0
+offset_left = -31.0
 offset_top = -29.0
-offset_right = 12.0
+offset_right = 31.0
 offset_bottom = 31.0
 
 [node name="area" type="Area2D" parent="."]
@@ -32,7 +32,7 @@ scale = Vector2(0.274, 0.274)
 texture = ExtResource("2_qmr78")
 
 [node name="Position2D" type="Marker2D" parent="torreta"]
-position = Vector2(113.139, 25.5474)
+position = Vector2(116.788, -0.000423431)
 
 [node name="seguimiento" type="Timer" parent="."]
 wait_time = 0.2
@@ -70,9 +70,14 @@ text = "Rango: ???"
 layout_mode = 2
 text = "Evolucionar"
 
+[node name="Vender" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Vender $??? "
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="area_entered" from="area" to="." method="_on_area_area_entered"]
 [connection signal="area_exited" from="area" to="." method="_on_area_area_exited"]
 [connection signal="timeout" from="seguimiento" to="." method="_on_seguimiento_timeout"]
 [connection signal="timeout" from="Velocidad_disparo" to="." method="_on_velocidad_disparo_timeout"]
 [connection signal="pressed" from="VBoxContainer/Subir_nivel" to="." method="_on_subir_nivel_pressed"]
+[connection signal="pressed" from="VBoxContainer/Vender" to="." method="_on_vender_pressed"]

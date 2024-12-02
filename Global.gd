@@ -6,10 +6,12 @@ var score = 0
 var highscore = 0
 var cash = 100
 var vidaBase = 10
-var daño_proyectil_cannon = 5
-var daño_proyectil_mg = 2
-var daño_proyectil_missile = 20
+var daño_proyectil_cannon = 3
+var daño_proyectil_mg = 1
+var daño_proyectil_missile = 10
 var daño_player = 1
+var nivel = 0
+var vida = 100
 
 func instance_node(node, location, parent):
 	var node_instance = node.instantiate()
@@ -31,7 +33,3 @@ func save_game():
 	save_game.store_line(JSON.stringify(highscore))
 	save_game.close()
 	
-#Código Angel
-
-var nivel = 0
-var vida = 20

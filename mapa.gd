@@ -2,6 +2,8 @@ extends Node2D
 
 var enemigo1 = preload("res://Enemigo1.tscn")
 var enemigo2 = preload("res://Enemigo2.tscn")
+var jefe = preload("res://Escenas/Jefe.tscn")
+var miniJefe = preload("res://Escenas/miniJefe.tscn")
 var torre_1 = preload("res://Escenas/torre_1.tscn")
 var enemigos_restantes = 6
 var enemigos_a_generar = []
@@ -11,7 +13,6 @@ var enemigos_a_generar = []
 
 func _ready():
 	Global.node_creation_paren = self
-	
 	iniciar_oleada() 
 
 func _process(_delta):
@@ -25,8 +26,19 @@ func _process(_delta):
 func iniciar_oleada():
 	Global.nivel += 1
 	Global.cash += 300
-	enemigos_a_generar = generar_lista_enemigos(Global.nivel)
-	enemigos_restantes = 3 * Global.nivel  
+	
+	if Global.nivel % 15 == 0:  
+		enemigos_a_generar = [jefe]
+		enemigos_restantes = 1 
+	elif Global.nivel % 5 == 0: 
+		enemigos_a_generar = generar_lista_enemigos(Global.nivel - 1)
+		enemigos_a_generar.append(miniJefe)
+		enemigos_restantes = enemigos_a_generar.size()
+	else:  
+		enemigos_a_generar = generar_lista_enemigos(Global.nivel)
+		enemigos_restantes = 3 * Global.nivel
+
+	enemigos_a_generar.shuffle()  
 	spawn_timer.start()
 	timer.start()
 	update_label()
@@ -41,7 +53,7 @@ func _on_spawn_enemigo_timeout():
 
 func generar_lista_enemigos(nivel):
 	var lista = []
-	var total_enemigos = 3 * nivel
+	var total_enemigos = 5 * nivel
 	var cantidad_tipo1 = int(total_enemigos * 0.75)
 	var cantidad_tipo2 = total_enemigos - cantidad_tipo1 
 	for i in range(cantidad_tipo1):
@@ -102,8 +114,3 @@ func _on_final_area_entered(area):
 		area.queue_free()  
 	if Global.vidaBase <= 0:
 		get_tree().change_scene_to_file("res://menu.tscn")
-
-
-func _on_button_torre_1_pressed():
-	var instance = torre_1.instantiate()
-	add_child(instance)
