@@ -1,15 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://dnfo43860lrfo"]
+[gd_scene load_steps=19 format=3 uid="uid://dnfo43860lrfo"]
 
 [ext_resource type="Script" path="res://mapa.gd" id="1_ohn6x"]
 [ext_resource type="Texture2D" uid="uid://b6ottelxl0baq" path="res://Map.png" id="1_q8hht"]
 [ext_resource type="PackedScene" uid="uid://bdmn4ygvsyve6" path="res://Player.tscn" id="2_p5w5v"]
 [ext_resource type="PackedScene" uid="uid://cavww2kwiuk5j" path="res://Enemigo1.tscn" id="2_uvu04"]
+[ext_resource type="Texture2D" uid="uid://ddhq1a5ppl31j" path="res://mapaJefe.png" id="3_7sypr"]
+[ext_resource type="PackedScene" uid="uid://c06w777jqe80s" path="res://Enemigo2.tscn" id="5_032i8"]
 [ext_resource type="Script" path="res://dinero.gd" id="5_ig51y"]
 [ext_resource type="Script" path="res://oleada.gd" id="6_v2he3"]
 [ext_resource type="Script" path="res://pasar_oleada.gd" id="7_o4gid"]
 [ext_resource type="Script" path="res://btn_si.gd" id="8_5vmv7"]
 [ext_resource type="Script" path="res://btn_no.gd" id="9_sisyt"]
 [ext_resource type="Texture2D" uid="uid://coq11kh417cl2" path="res://icono_dinero.png" id="10_85qk4"]
+[ext_resource type="Texture2D" uid="uid://dp6b5kun1e01h" path="res://Torres/Tower.png" id="13_uknyp"]
+[ext_resource type="Texture2D" uid="uid://wxc17np7hlqi" path="res://Torres/Cañon/Cannon.png" id="14_srvnd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yfmeu"]
 texture = ExtResource("1_q8hht")
@@ -52,30 +56,150 @@ texture_region_size = Vector2i(64, 64)
 4:0/0 = 0
 5:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfqnu"]
+texture = ExtResource("3_7sypr")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_0mcme"]
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_yfmeu")
+sources/1 = SubResource("TileSetAtlasSource_mfqnu")
 
 [sub_resource type="Curve2D" id="Curve2D_flv83"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 895, -31, 0, 0, 0, 0, 736, -31, 0, 0, 0, 0, 740, 23, 0, 0, 0, 0, 740, 23, 0, 0, 0, 0, 737, 37, 0, 0, 0, 0, 714, 36, 0, 0, 0, 0, 684, 33, 0, 0, 0, 0, 670, 31, 0, 0, 0, 0, 670, 46, 0, 0, 0, 0, 676, 341, 0, 0, 0, 0, 669, 356, 0, 0, 0, 0, 653, 356, 0, 0, 0, 0, 497, 354, 0, 0, 0, 0, 477, 353, 0, 0, 0, 0, 475, 338, 0, 0, 0, 0, 484, -23, 0, 0, 0, 0, 479, -34, 0, 0, 0, 0, 466, -36, 0, 0, 0, 0, 238, -36, 0, 0, 0, 0, 224, -33, 0, 0, 0, 0, 220, -16, 0, 0, 0, 0, 224, 151, 0, 0, 0, 0, 219, 163, 0, 0, 0, 0, 203, 163, 0, 0, 0, 0, 61, 163)
+"points": PackedVector2Array(0, 0, 0, 0, -752, 430, 0, 0, 0, 0, -754, 332, 0, 0, 0, 0, -171, 325, 0, 0, 0, 0, -173, 26, 0, 0, 0, 0, -323, 24, 0, 0, 0, 0, -324, 49, 0, 0, 0, 0, -498, 51, 0, 0, 0, 0, -823, 47, 0, 0, 0, 0, -826, -120, 0, 0, 0, 0, -827, -138)
 }
-point_count = 25
+point_count = 10
 
 [node name="Base" type="Node2D"]
+position = Vector2(527, -105)
 script = ExtResource("1_ohn6x")
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-4, 5)
 tile_set = SubResource("TileSet_0mcme")
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0, 262144, 0, 0, 327680, 0, 0, 393215, 0, 0, 327679, 0, 0, 262143, 0, 0, 196607, 0, 0, 131071, 0, 0, 65535, 0, 0, 131072, 65536, 0, 196608, 0, 0, -1, 0, 0, -65536, 0, 0, -131072, 0, 0, -65537, 0, 0, 458751, 0, 0, 393216, 0, 0, 1, 131072, 0, 65537, 131072, 0, 131073, 196608, 0, 196609, 131072, 0, 262145, 131072, 0, 327681, 131072, 0, 393217, 131072, 0, 393218, 131072, 0, 393219, 131072, 0, 393220, 131072, 0, 393221, 131072, 0, 393222, 131072, 0, 393223, 131072, 0, 393224, 131072, 0, 393225, 131072, 0, 327689, 196608, 0, 327688, 196608, 0, 327687, 458752, 0, 327686, 131072, 0, 327685, 131072, 0, 327684, 131072, 0, 327683, 131072, 0, 327682, 131072, 0, 262146, 131072, 0, 262147, 131072, 0, 262148, 131072, 0, 262149, 131072, 0, 262150, 131072, 0, 262151, 262144, 0, 262152, 131072, 0, 262153, 131072, 0, 196617, 131072, 0, 196616, 131072, 0, 196615, 262144, 0, 196614, 131072, 0, 196613, 131072, 0, 196612, 131072, 0, 196611, 131072, 0, 196610, 131072, 0, 131074, 196608, 0, 131075, 393216, 0, 131076, 131072, 0, 131077, 131072, 0, 131078, 131072, 0, 131079, 262144, 0, 131080, 131072, 0, 131081, 131072, 0, 65545, 131072, 0, 65544, 131072, 0, 65543, 262144, 0, 65542, 131072, 0, 65541, 131072, 0, 65540, 131072, 0, 65539, 262144, 0, 65538, 131072, 0, 2, 131072, 0, 3, 262144, 0, 4, 131072, 0, 5, 131072, 0, 6, 131072, 0, 7, 262144, 0, 8, 131072, 0, 9, 131072, 0, -65527, 131072, 0, -65528, 131072, 0, -65529, 524288, 0, -65530, 196608, 0, -65531, 196608, 0, -65532, 196608, 0, -65533, 327680, 0, -65534, 131072, 0, -65535, 131072, 0, -131071, 131072, 0, -131070, 131072, 0, -131069, 131072, 0, -131068, 131072, 0, -131067, 131072, 0, -131066, 131072, 0, -131065, 131072, 0, -131064, 131072, 0, -131063, 131072, 0, 393226, 131072, 0, 393227, 131072, 0, 393228, 131072, 0, 393229, 131072, 0, 327693, 131072, 0, 327692, 131072, 0, 327691, 131072, 0, 327690, 393216, 0, 262154, 262144, 0, 262155, 131072, 0, 262156, 131072, 0, 262157, 131072, 0, 196621, 131072, 0, 196620, 131072, 0, 196619, 131072, 0, 196618, 262144, 0, 131082, 262144, 0, 131083, 131072, 0, 131084, 131072, 0, 131085, 131072, 0, 65549, 131072, 0, 65548, 131072, 0, 65547, 131072, 0, 65546, 262144, 0, 10, 327680, 0, 11, 393216, 0, 12, 131072, 0, 13, 131072, 0, -131062, 131072, 0, -65526, 131072, 0, -65525, 327680, 0, -131061, 131072, 0, -131060, 131072, 0, -65524, 196608, 0, -131059, 131072, 0, -65523, 196608, 0)
+layer_0/tile_data = PackedInt32Array(-65542, 1, 1, -6, 1, 2, 65530, 1, 3, 131066, 1, 4, 196602, 1, 5, 262138, 1, 6, 327674, 1, 7, 393210, 1, 8, -65541, 65537, 1, -5, 65537, 2, 65531, 65537, 3, 131067, 65537, 4, 196603, 65537, 5, 262139, 65537, 6, 327675, 65537, 7, 393211, 65537, 8, -65540, 131073, 1, -4, 131073, 2, 65532, 131073, 3, 131068, 131073, 4, 196604, 131073, 5, 262140, 131073, 6, 327676, 131073, 7, 393212, 131073, 8, -65539, 196609, 1, -3, 196609, 2, 65533, 196609, 3, 131069, 196609, 4, 196605, 196609, 5, 262141, 196609, 6, 327677, 196609, 7, 393213, 196609, 8, -131078, 1, 0, -131077, 65537, 0, -131076, 131073, 0, -131075, 196609, 0, -131074, 262145, 0, -65538, 262145, 1, -2, 262145, 2, 65534, 262145, 3, 131070, 262145, 4, 196606, 262145, 5, 262142, 262145, 6, 327678, 262145, 7, 393214, 262145, 8, -131073, 327681, 0, -65537, 327681, 1, -1, 327681, 2, 65535, 327681, 3, 131071, 327681, 4, 196607, 327681, 5, 262143, 327681, 6, 327679, 327681, 7, 393215, 327681, 8, -196608, 393217, 0, -131072, 393217, 1, -65536, 393217, 2, 0, 393217, 3, 65536, 393217, 4, 131072, 393217, 5, 196608, 393217, 6, 262144, 393217, 7, 327680, 393217, 8, -196607, 458753, 0, -131071, 458753, 1, -65535, 458753, 2, 1, 458753, 3, 65537, 458753, 4, 131073, 458753, 5, 196609, 458753, 6, 262145, 458753, 7, 327681, 458753, 8, -196606, 524289, 0, -131070, 524289, 1, -65534, 524289, 2, 2, 524289, 3, 65538, 524289, 4, 131074, 524289, 5, 196610, 524289, 6, 262146, 524289, 7, 327682, 524289, 8, -196605, 589825, 0, -131069, 589825, 1, -65533, 589825, 2, 3, 589825, 3, 65539, 589825, 4, 131075, 589825, 5, 196611, 589825, 6, 262147, 589825, 7, 327683, 589825, 8, -196604, 655361, 0, -131068, 655361, 1, -65532, 655361, 2, 4, 655361, 3, 65540, 655361, 4, 131076, 655361, 5, 196612, 655361, 6, 262148, 655361, 7, 327684, 655361, 8, -196603, 720897, 0, -131067, 720897, 1, -65531, 720897, 2, 5, 720897, 3, 65541, 720897, 4, 131077, 720897, 5, 196613, 720897, 6, 262149, 720897, 7, 327685, 720897, 8)
 
 [node name="Path2D" type="Path2D" parent="."]
+position = Vector2(517, -55)
 curve = SubResource("Curve2D_flv83")
 
 [node name="Area2D" parent="Path2D" instance=ExtResource("2_uvu04")]
-position = Vector2(895, -31)
-rotation = 3.14159
+position = Vector2(-752, 430)
+rotation = -1.5912
+
+[node name="PathFollow2D" parent="Path2D" instance=ExtResource("5_032i8")]
+position = Vector2(-752, 430)
+rotation = -1.5912
 
 [node name="next_wave" type="Timer" parent="."]
 wait_time = 30.0
@@ -85,20 +209,21 @@ autostart = true
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource("2_p5w5v")]
+position = Vector2(11, 103)
 
 [node name="timer_oleada" type="Label" parent="."]
-offset_left = -53.0
-offset_top = 241.0
-offset_right = 39.0
-offset_bottom = 264.0
+offset_left = -374.0
+offset_top = 404.0
+offset_right = -282.0
+offset_bottom = 427.0
 text = "Sig. oleada: "
 
 [node name="Dinero" type="Label" parent="."]
 top_level = true
-offset_left = -32.0
-offset_top = -84.0
-offset_right = 82.0
-offset_bottom = -42.0
+offset_left = 163.0
+offset_top = -346.0
+offset_right = 277.0
+offset_bottom = -304.0
 theme_override_font_sizes/font_size = 30
 text = "100"
 max_lines_visible = 10
@@ -106,20 +231,28 @@ script = ExtResource("5_ig51y")
 
 [node name="Oleada" type="Label" parent="."]
 top_level = true
-offset_left = -64.0
-offset_top = -44.0
-offset_right = 50.0
-offset_bottom = -2.0
+offset_left = 739.0
+offset_top = -342.0
+offset_right = 853.0
+offset_bottom = -300.0
 theme_override_font_sizes/font_size = 30
 text = "Oleada:"
 max_lines_visible = 10
 script = ExtResource("6_v2he3")
 
+[node name="Vida" type="Label" parent="."]
+offset_left = 285.0
+offset_top = 388.0
+offset_right = 520.0
+offset_bottom = 411.0
+text = "Vida: 10
+"
+
 [node name="container_next_wave" type="GridContainer" parent="."]
-offset_left = 155.0
-offset_top = -245.0
-offset_right = 664.0
-offset_bottom = -133.0
+offset_left = -262.0
+offset_top = -359.0
+offset_right = 247.0
+offset_bottom = -247.0
 
 [node name="pasar_oleada" type="Label" parent="container_next_wave"]
 layout_mode = 2
@@ -139,12 +272,38 @@ text = "No
 script = ExtResource("9_sisyt")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -63.0
-offset_top = -75.0
-offset_right = -30.0
-offset_bottom = -49.0
+offset_left = -393.0
+offset_top = -232.0
+offset_right = -360.0
+offset_bottom = -206.0
 texture = ExtResource("10_85qk4")
 expand_mode = 1
+
+[node name="Final" type="Area2D" parent="."]
+position = Vector2(-822, -135)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Final"]
+position = Vector2(515, -15)
+polygon = PackedVector2Array(-35, -57, 25, -56, 25, -41, -35, -43)
+
+[node name="Button_torre_1" type="Button" parent="."]
+offset_left = -181.0
+offset_top = 415.0
+offset_right = -113.0
+offset_bottom = 481.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Button_torre_1"]
+position = Vector2(31, 31)
+scale = Vector2(0.274, 0.274)
+texture = ExtResource("13_uknyp")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Button_torre_1"]
+position = Vector2(31, 31)
+scale = Vector2(0.274, 0.274)
+texture = ExtResource("14_srvnd")
+metadata/_edit_group_ = true
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
@@ -153,3 +312,6 @@ expand_mode = 1
 [connection signal="timeout" from="Spawn_Enemigo" to="." method="_on_spawn_enemigo_timeout"]
 [connection signal="pressed" from="container_next_wave/btn_si" to="." method="_on_btn_si_pressed"]
 [connection signal="pressed" from="container_next_wave/btn_no" to="." method="_on_btn_no_pressed"]
+[connection signal="area_entered" from="Final" to="." method="_on_final_area_entered"]
+[connection signal="body_entered" from="Final" to="." method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="Button_torre_1" to="." method="_on_button_torre_1_pressed"]

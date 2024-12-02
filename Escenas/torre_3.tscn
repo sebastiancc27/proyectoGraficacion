@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2uybte7b5o5s"]
+
+[ext_resource type="Script" path="res://Script/torre_3.gd" id="1_bpjqm"]
+[ext_resource type="Texture2D" uid="uid://dp6b5kun1e01h" path="res://Torres/Tower.png" id="2_8qdhd"]
+[ext_resource type="Texture2D" uid="uid://cjtufkf2l4c0s" path="res://Torres/Misil/Missile_Launcher.png" id="3_itnup"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k55sh"]
+radius = 271.472
+
+[node name="torre_3" type="Node2D"]
+script = ExtResource("1_bpjqm")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -15.0
+offset_top = -29.0
+offset_right = 12.0
+offset_bottom = 31.0
+
+[node name="area" type="Area2D" parent="."]
+
+[node name="area_vision" type="CollisionShape2D" parent="area"]
+shape = SubResource("CircleShape2D_k55sh")
+
+[node name="base" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.274, 0.274)
+texture = ExtResource("2_8qdhd")
+
+[node name="torreta" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.274, 0.274)
+texture = ExtResource("3_itnup")
+
+[node name="Position2D" type="Marker2D" parent="torreta"]
+position = Vector2(149.635, 3.64963)
+
+[node name="seguimiento" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="Velocidad_disparo" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+offset_right = 141.0
+offset_bottom = 89.0
+
+[node name="Subir_nivel" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Subir Nivel"
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Nivel ???"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Daño: ???"
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Rango: ???"
+
+[node name="Evolucionar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Evolucionar"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="area_entered" from="area" to="." method="_on_area_area_entered"]
+[connection signal="area_exited" from="area" to="." method="_on_area_area_exited"]
+[connection signal="timeout" from="seguimiento" to="." method="_on_seguimiento_timeout"]
+[connection signal="timeout" from="Velocidad_disparo" to="." method="_on_velocidad_disparo_timeout"]
+[connection signal="pressed" from="VBoxContainer/Subir_nivel" to="." method="_on_subir_nivel_pressed"]

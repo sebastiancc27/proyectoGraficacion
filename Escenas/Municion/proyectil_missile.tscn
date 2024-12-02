@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://conlc5pa57ha2"]
+
+[ext_resource type="Script" path="res://Script/proyectil_missile.gd" id="1_4lqwq"]
+[ext_resource type="Texture2D" uid="uid://u1o6cbsr6ukm" path="res://Torres/Misil/Missile.png" id="2_lshit"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k0vip"]
+radius = 15.0
+height = 64.0
+
+[node name="Proyectil_missile" type="Node2D" groups=["Proyectil_missile"]]
+script = ExtResource("1_4lqwq")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Proyectil_missile"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["Proyectil_missile"]]
+rotation = 1.5708
+scale = Vector2(0.274, 0.274)
+shape = SubResource("CapsuleShape2D_k0vip")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Proyectil_cannon"]]
+rotation = 1.5708
+scale = Vector2(0.274, 0.274)
+texture = ExtResource("2_lshit")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

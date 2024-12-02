@@ -1,7 +1,7 @@
 extends PathFollow2D
 
-var velocidad = 60
-var vida = 5 * Global.vida + Global.nivel
+var velocidad = 100
+var vida = 2 * Global.vida + Global.nivel
 
 func _process(_delta):
 	_vida()
@@ -12,7 +12,7 @@ func _physics_process(_delta):
 func _vida():
 	if vida <= 0:
 		queue_free()
-		Global.cash += 30
+		Global.cash += 10
 
 
 func _on_area_2d_area_entered(area):

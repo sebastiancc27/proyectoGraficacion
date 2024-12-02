@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dc1ays7kshrqw"]
+[gd_scene load_steps=11 format=3 uid="uid://dc1ays7kshrqw"]
 
 [ext_resource type="FontFile" uid="uid://c2b4go0rd7ih5" path="res://Font.ttf" id="1_bo4gf"]
 [ext_resource type="Script" path="res://menu.gd" id="1_c0i1r"]
 [ext_resource type="Texture2D" uid="uid://xojr7mbce4im" path="res://fei-bg-transparent.png" id="1_fnrxc"]
+[ext_resource type="AudioStream" uid="uid://b7v5gjixya25j" path="res://musicaFondo.mp3" id="4_7v7h0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjnjr"]
 bg_color = Color(0.929412, 0.486275, 0.0196078, 1)
@@ -127,6 +128,9 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_bo4gf")
 theme_override_font_sizes/font_size = 40
 text = "RackDefense"
+
+[node name="MusicaFondo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_7v7h0")
 
 [connection signal="pressed" from="VBoxContainer/ButtonJugar" to="." method="_on_button_jugar_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonCreditos" to="." method="_on_button_creditos_pressed"]

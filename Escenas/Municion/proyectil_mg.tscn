@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhabe488r0cl3"]
+
+[ext_resource type="Texture2D" uid="uid://c216blbhevy6f" path="res://Torres/MG/Bullet_MG.png" id="1_dcdkd"]
+[ext_resource type="Script" path="res://Script/proyectil_mg.gd" id="1_knnaq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umsr8"]
+size = Vector2(20, 2)
+
+[node name="proyectil_mg" type="Node2D" groups=["Proyectil_mg"]]
+script = ExtResource("1_knnaq")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Proyectil_mg"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["Proyectil_mg"]]
+shape = SubResource("RectangleShape2D_umsr8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.274, 0.274)
+texture = ExtResource("1_dcdkd")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

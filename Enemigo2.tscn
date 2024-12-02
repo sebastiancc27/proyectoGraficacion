@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c06w777jqe80s"]
+
+[ext_resource type="Script" path="res://path_follow_2d.gd" id="1_a7fh1"]
+[ext_resource type="Texture2D" uid="uid://0i5qwjs5y3n5" path="res://frogInd.png" id="2_7npkq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71521"]
+size = Vector2(36, 30)
+
+[node name="Enemigo2" type="PathFollow2D" groups=["Enemigo"]]
+script = ExtResource("1_a7fh1")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemigo"]]
+
+[node name="FastEnemy" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("2_7npkq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_71521")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

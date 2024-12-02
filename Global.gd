@@ -5,6 +5,11 @@ var player = null
 var score = 0
 var highscore = 0
 var cash = 100
+var vidaBase = 10
+var daño_proyectil_cannon = 5
+var daño_proyectil_mg = 2
+var daño_proyectil_missile = 20
+var daño_player = 1
 
 func instance_node(node, location, parent):
 	var node_instance = node.instantiate()
